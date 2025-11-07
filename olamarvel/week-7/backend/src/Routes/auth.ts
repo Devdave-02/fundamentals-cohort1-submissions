@@ -19,7 +19,7 @@ router.post('/register', [
 router.post('/login', [
     body("email", "email is required").isEmail(),
     body("password", "password is required").isLength({ min: 8, max: 20 })], asyncHandler(Auth.login));
-router.post('/logout', protect, asyncHandler(Auth.logout));
-router.post('/refresh', protect, asyncHandler(Auth.refresh));
+router.post('/logout', asyncHandler(Auth.logout));
+router.post('/refresh', asyncHandler(Auth.refresh));
 
 export default router
