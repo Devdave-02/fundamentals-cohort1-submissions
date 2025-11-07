@@ -2,12 +2,12 @@
 import request from 'supertest';
 import mongoose from 'mongoose';
 import express from 'express';
-import activitiesRoutes from '../../src/Routes/activities';
-import authRoutes from '../../src/Routes/auth';
-import { errorHandler } from '../../src/Middlewares/error';
-import { protect } from '../../src/Middlewares/protect';
-import User from '../../src/Models/User';
-import Activity from '../../src/Models/Activity';
+import activitiesRoutes from '../../../src/Routes/activities';
+import authRoutes from '../../../src/Routes/auth';
+import { errorHandler } from '../../../src/Middlewares/error';
+import { protect } from '../../../src/Middlewares/protect';
+import User from '../../../src/Models/User';
+import Activity from '../../../src/Models/Activity';
 
 
 const app = express();
@@ -72,7 +72,6 @@ describe('Activities API', () => {
           durationMinutes: 30,
           caloriesBurned: 350,
         });
-        console.log(res.body)
       expect(res.statusCode).toEqual(201);
       expect(res.body.data).toHaveProperty('type', 'Running');
     });

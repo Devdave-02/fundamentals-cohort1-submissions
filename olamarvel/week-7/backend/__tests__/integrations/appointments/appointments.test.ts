@@ -2,13 +2,13 @@
 import request from 'supertest';
 import mongoose from 'mongoose';
 import express from 'express';
-import appointmentsRoutes from '../../src/Routes/appointments';
-import authRoutes from '../../src/Routes/auth';
-import { errorHandler } from '../../src/Middlewares/error';
-import { protect } from '../../src/Middlewares/protect';
-import User from '../../src/Models/User';
-import Doctor from '../../src/Models/Doctor';
-import Appointment from '../../src/Models/Appointments';
+import appointmentsRoutes from '../../../src/Routes/appointments';
+import authRoutes from '../../../src/Routes/auth';
+import { errorHandler } from '../../../src/Middlewares/error';
+import { protect } from '../../../src/Middlewares/protect';
+import User from '../../../src/Models/User';
+import Doctor from '../../../src/Models/Doctor';
+import Appointment from '../../../src/Models/Appointments';
 
 
 const app = express();

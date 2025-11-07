@@ -54,10 +54,6 @@ describe("JWT Utils", () => {
   const mockDecodedRefresh = { sub: "12345", jti: mockJti };
 
   beforeEach(() => {
-    process.env.ACCESS_TOKEN_SECRET = "access_secret";
-    process.env.REFRESH_TOKEN_SECRET = "refresh_secret";
-    process.env.ACCESS_TOKEN_EXPIRES = "15m";
-    process.env.REFRESH_TOKEN_EXPIRES = "7d";
     jest.clearAllMocks();
   });
 
@@ -67,7 +63,7 @@ describe("JWT Utils", () => {
     const token = signAccess(mockUser as any);
     expect(jwt.sign).toHaveBeenCalledWith(
       { sub: mockUser._id },
-      "access_secret",
+      process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "15m" }
     );
     expect(token).toBe(mockAccessToken);
@@ -79,7 +75,7 @@ describe("JWT Utils", () => {
     const token = signRefresh(mockUser._id, mockJti);
     expect(jwt.sign).toHaveBeenCalledWith(
       { sub: mockUser._id, jti: mockJti },
-      "refresh_secret",
+      process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: "7d" }
     );
     expect(token).toBe(mockRefreshToken);
@@ -89,7 +85,7 @@ describe("JWT Utils", () => {
     (jwt.verify as jest.Mock).mockReturnValue(mockDecodedAccess);
 
     const result = verifyAccess(mockAccessToken);
-    expect(jwt.verify).toHaveBeenCalledWith(mockAccessToken, "access_secret");
+    expect(jwt.verify).toHaveBeenCalledWith(mockAccessToken, process.env.ACCESS_TOKEN_SECRET);
     expect(result).toEqual(mockDecodedAccess);
   });
 
@@ -106,7 +102,7 @@ describe("JWT Utils", () => {
     (jwt.verify as jest.Mock).mockReturnValue(mockDecodedRefresh);
 
     const result = verifyRefresh(mockRefreshToken);
-    expect(jwt.verify).toHaveBeenCalledWith(mockRefreshToken, "refresh_secret");
+    expect(jwt.verify).toHaveBeenCalledWith(mockRefreshToken, process.env.REFRESH_TOKEN_SECRET);
     expect(result).toEqual(mockDecodedRefresh);
   });
 
