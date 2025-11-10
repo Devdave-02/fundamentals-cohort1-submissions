@@ -1,0 +1,68 @@
+{
+  "name": "codepilot-backend",
+  "version": "1.0.0",
+  "description": "CodePilot Backend API with comprehensive testing strategy",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "test:unit": "cross-env NODE_ENV=test jest --testPathPattern=unit --verbose",
+    "test:integration": "cross-env NODE_ENV=test jest --testPathPattern=integration --verbose --runInBand",
+    "test:e2e": "cross-env NODE_ENV=test jest --testPathPattern=e2e --verbose --runInBand",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage --verbose --runInBand",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
+    "lint": "eslint src tests"
+  },
+  "keywords": [
+    "express",
+    "testing",
+    "jest",
+    "ci-cd"
+  ],
+  "author": "CodePilot Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-validator": "^7.0.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.0.2",
+    "eslint": "^8.56.0",
+    "cross-env": "^7.0.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js",
+      "!src/config/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html",
+      "json-summary"
+    ]
+  }
+}
