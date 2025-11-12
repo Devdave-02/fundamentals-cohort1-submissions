@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import logger from '../util/logger';
 
 export interface AuthRequest extends Request {
   user?: { id: string };
@@ -17,7 +18,7 @@ export const protect = (req: AuthRequest, res: Response, next: NextFunction) => 
     req.user = { id: decoded.sub };
     next();
   } catch (error) {
-    console.error(error)
+    logger.error(error)
     res.status(401).json({ message: 'Not authorized, token failed' });
   }
 };

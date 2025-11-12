@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import logger from "../util/logger";
 
 export async function connectDB(uri: string) {
   mongoose.set("strictQuery", true);
   await mongoose.connect(uri);
-  console.log("MongoDB connected");
+  logger.info("MongoDB connected");
 }

@@ -3,14 +3,14 @@ import Doctor from "../Models/Doctor";
 import { AuthRequest } from "../Middlewares/protect";
 import { validationResult } from "express-validator";
 import Appointments from "../Models/Appointments";
-import { IUser } from "../Models/User";
+import logger from "../util/logger";
 
 export const getDoctors = async (req: AuthRequest, res: Response): Promise<Response> => {
     try {
         const doctors = await Doctor.find({});
         return res.status(200).json({ success: true, data: doctors });
     } catch (error) {
-        console.error("Error fetching doctors:", error);
+        logger.error("Error fetching doctors:", error);
         return res.status(500).json({ success: false, error: "Server error while fetching doctors" });
     }
 }
@@ -52,7 +52,7 @@ export const getDoctorById = async (req: AuthRequest, res: Response): Promise<Re
         return res.status(200).json({ success: true, data: { ...doctor.toObject(), interactingUsers } });
 
     } catch (error) {
-        console.error("Error fetching doctor by ID:", error);
+        logger.error("Error fetching doctor by ID:", error);
         return res.status(500).json({ success: false, error: "Server error while fetching doctor details" })
     }
 }

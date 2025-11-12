@@ -73,8 +73,8 @@ const PORT = process.env.PORT || 5000;
 
 connectDB(process.env.MONGO_URI || "mongodb://localhost:27017/pulsetrack")
   .then(() => {
-    app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+    app.listen(PORT, () => logger.info(`Server running on ${PORT}`));
   })
   .catch(err => {
-    console.error("DB connection failed", err);
+    logger.error("DB connection failed", err);
   });
