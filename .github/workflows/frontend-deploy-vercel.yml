@@ -17,8 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: "npm"
+          node-version: 20
 
       - name: Install dependencies
         working-directory: frontend
@@ -29,9 +28,11 @@ jobs:
         run: npm run lint --if-present
 
       - name: Run Tests
+        working-directory: frontend
         run: npm test --if-present
 
       - name: Build
+        working-directory: frontend
         run: npm run build
 
       - name: Upload build artifacts
