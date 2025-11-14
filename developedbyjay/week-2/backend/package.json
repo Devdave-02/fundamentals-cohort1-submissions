@@ -1,0 +1,23 @@
+{
+  "name": "performance-opt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch server.ts",
+    "autocannon": " autocannon -c 100 -d 20 -p 10 http://localhost:3000/api/process-data -m POST",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.1",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "autocannon": "^8.0.0",
+    "tsx": "^4.20.6"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "latency-detective-backend",
+  "version": "1.0.0",
+  "description": "Node.js performance optimization challenge - backend",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --inspect server.js",
+    "profile": "node --prof server.js"
+  },
+  "keywords": ["nodejs", "express", "performance", "worker-threads"],
+  "author": "Brave Engineer",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

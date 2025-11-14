@@ -1,0 +1,39 @@
+name: CodePilot Backend CI
+
+on:
+  push:
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        # Test against modern, stable Node versions
+        node-version: [18.x, 20.x] 
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci # Use 'ci' for faster, reliable builds
+
+    - name: Run tests and generate coverage
+      run: npm run test:ci
+
+    # Optional: You can add steps here to upload coverage reports
+    # to services like Codecov or Coveralls.
+    # - name: Upload coverage to Codecov
+    #   uses: codecov/codecov-action@v4
+    #   with:
+    #     token: ${{ secrets.CODECOV_TOKEN }} # Needs to be set in repo secrets
