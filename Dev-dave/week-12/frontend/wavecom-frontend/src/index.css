@@ -1,0 +1,16 @@
+body { font-family: Arial, Helvetica, sans-serif; padding: 16px; }
+.container { max-width: 900px; margin: 0 auto; }
+.form { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+.form label { display: flex; flex-direction: column; font-size: 13px; }
+.form input, .form select { padding: 6px; min-width: 180px; }
+.job-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+.job-table th, .job-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+.mono { font-family: monospace; font-size: 12px; }
+.button { padding: 8px 12px; cursor: pointer; }
+.button-primary { background-color: #007bff; color: white; border: none; }
+.button-primary:hover { background-color: #0056b3; }
+.button-danger { background-color: #dc3545; color: white; border: none; }
+.button-danger:hover { background-color: #a71d2a; }
+.status-running { color: green; font-weight: bold; }
+.status-completed { color: blue; font-weight: bold; }
+.status-failed { color: red; font-weight: bold; }
